@@ -61,7 +61,7 @@ There is an ability to specify the starting path instead of the buckets listing:
 c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'
 ```
 
-(`--notebook-dir` does not seem to work).
+**`--notebook-dir` will not work**.
 
 Checkpoints
 -----------
