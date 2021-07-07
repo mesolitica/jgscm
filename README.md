@@ -11,9 +11,11 @@ Besides, snapshots are completely supported too.
 Installation
 ------------
 
-```
+```bash
 pip install jgscm
 ```
+
+Required Python>=3.6 and notebook>=6.4.0.
 
 You must point to jgscm in [Jupyter settings](http://jupyter-notebook.readthedocs.io/en/latest/config.html).
 Usually you'd need to edit `~/.jupyter/jupyter_notebook_config.py` and
