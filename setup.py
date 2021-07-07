@@ -1,19 +1,20 @@
 from setuptools import setup
 
+with open('requirements.txt') as fopen:
+    req = list(filter(None, fopen.read().split('\n')))
 
 setup(
     name="jgscm",
     description="Jupyter Google Cloud Storage ContentsManager",
     version="0.1.9",
     license="MIT",
-    author="Vadim Markovtsev",
-    author_email="vadim@sourced.tech",
-    url="https://github.com/src-d/jgscm",
-    download_url="https://github.com/src-d/jgscm",
+    author="Husein Zolkepli",
+    author_email="husein@mesolitica.com",
+    url="https://github.com/mesolitica/jgscm",
+    download_url="https://github.com/mesolitica/jgscm",
     packages=["jgscm"],
     keywords=["jupyter", "ipython", "gcloud", "gcs"],
-    install_requires=["google-cloud>=0.32.0", "notebook>=4.2", "nbformat>=4.1",
-                      "tornado>=4", "traitlets>=4.2"],
+    install_requires=req,
     package_data={"": ["requirements.txt", "LICENSE", "README.md"]},
     classifiers=[
         "Development Status :: 3 - Alpha",

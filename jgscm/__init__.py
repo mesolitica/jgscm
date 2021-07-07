@@ -5,7 +5,7 @@ import os
 import sys
 import uuid
 
-from google.cloud.exceptions import NotFound, Forbidden, BadRequest
+from google.api_core.exceptions import NotFound, Forbidden, BadRequest
 from google.cloud.storage import Client as GSClient, Blob
 import nbformat
 from notebook.services.contents.checkpoints import Checkpoints, \

@@ -1,10 +1,7 @@
-Jupyter FS in Google Cloud Storage [![PyPI](https://img.shields.io/pypi/v/jgscm.svg)](https://pypi.python.org/pypi/jgscm) [![Build Status](https://travis-ci.org/src-d/jgscm.svg?branch=master)](https://travis-ci.org/src-d/jgscm) [![codecov](https://codecov.io/github/src-d/jgscm/coverage.svg)](https://codecov.io/gh/src-d/jgscm)
-========================================
-
 Jupyter Google Storage Contents Manager allows working with Jupyter notebooks directly in Google Cloud Storage.
 It aims to be a complete drop-in replacement for the stock filesystem
 [ContentsManager](http://jupyter-notebook.readthedocs.io/en/latest/extending/contents.html).
-Thus JGSCM is only compatible with a relatively modern IPython/Jupyter stack (version 4 and above).
+Thus JGSCM is only compatible with a relatively modern Jupyter stack (version 6 and above).
 
 The root level of the virtual file system is the list of buckets, which
 are presented as directories. In turn, each bucket is presented as an
@@ -13,23 +10,23 @@ Besides, snapshots are completely supported too.
 
 Installation
 ------------
+
 ```
 pip install jgscm
 ```
+
 You must point to jgscm in [Jupyter settings](http://jupyter-notebook.readthedocs.io/en/latest/config.html).
 Usually you'd need to edit `~/.jupyter/jupyter_notebook_config.py` and
 insert the following:
+
 ```python
 c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'
 # c.GoogleStorageContentManager.project = ''
 # c.GoogleStorageContentManager.keyfile = ''
 ```
+
 `project` and `keyfile` must be set if [gcloud](https://github.com/GoogleCloudPlatform/gcloud-python)
 cannot determine the defaults. Read more about it in one of the next sections.
-
-Contributions
--------------
-...are welcome! See [CONTRIBUTING](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
 
 License
 -------
@@ -55,13 +52,16 @@ the number of calls, they still can introduce substantial delays in
 Jupyter UI. Please, be patient.
 
 There is an ability to specify the starting path instead of the buckets listing:
+
 ```python
 c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'
 ```
+
 (`--notebook-dir` does not seem to work).
 
 Checkpoints
 -----------
+
 Checkpoints are stored in .ipynb_checkpoints directory as usual. That
 name can be changed via `c.GoogleStorageCheckpoints.checkpoint_dir` in
 Jupyter configuration. You can set the dedicated bucket for snapshots via
@@ -71,6 +71,7 @@ The name of each checkpoint is \<notebook name\>-[UUID4](https://en.wikipedia.or
 
 Hidden files and directories
 ----------------------------
+
 As with any UNIX filesystem, files and directories with names starting
 with dot "`.`" are considered hidden by default. You can change this by
 setting `c.GoogleStorageContentManager.hide_dotted_blobs` to `False`.
@@ -84,6 +85,7 @@ Google Cloud (`gcloud init`). If this is not the case, you can explicitly
 set the Google Cloud project and authentication credentials.
 
 Open Jupyter configuration and set
+
 ```python
 c.GoogleStorageContentManager.project = '...'
 c.GoogleStorageContentManager.keyfile = '...'
@@ -93,10 +95,3 @@ Regarding keyfiles, please read the [official documentation](https://cloud.googl
 Go to API Manager / Credentials in cloud console to generate it:
 
 ![API Manager / Credentials](docs/keyfile.png)
-
-Testing
--------
-```
-PYTHONPATH=`pwd` python3 -W ignore::DeprecationWarning jgscm/tests/test.py
-```
-JGSCM writes logs at DEBUG verbosity level (`c.Application.log_level = "DEBUG"`).
