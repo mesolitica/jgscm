@@ -94,4 +94,4 @@ c.GoogleStorageContentManager.keyfile = '...'
 Regarding keyfiles, please read the [official documentation](https://cloud.google.com/storage/docs/authentication).
 Go to API Manager / Credentials in cloud console to generate it:
 
-![API Manager / Credentials](docs/keyfile.png)
+![API Manager / Credentials](https://raw.githubusercontent.com/src-d/jgscm/master/docs/keyfile.png)
