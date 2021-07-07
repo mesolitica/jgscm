@@ -28,9 +28,13 @@ c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'
 `project` and `keyfile` must be set if [gcloud](https://github.com/GoogleCloudPlatform/gcloud-python)
 cannot determine the defaults. Read more about it in one of the next sections.
 
-License
--------
-MIT, see [LICENSE](LICENSE.md).
+Or if you already give GCS access to the VM, simply,
+
+```bash
+jupyter notebook --NotebookApp.token='' \
+--NotebookApp.contents_manager_class='jgscm.GoogleStorageContentManager' \
+--GoogleStorageContentManager.default_path='bucket' \
+```
 
 Usage
 -----
